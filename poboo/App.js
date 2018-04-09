@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
+  AppRegistry,
   Platform,
   StyleSheet,
   Text,
@@ -46,4 +47,4 @@ const App = () => (
   </View>
 );
 
-export default App;
+AppRegistry.registerComponent('App', () => App);
