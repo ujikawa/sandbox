@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  AppRegistry,
   Platform,
   StyleSheet,
   Text,
