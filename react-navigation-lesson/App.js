@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
 const HomeScreen = ({ navigation }) => (
   <View style={styles.container}>
-    <Text>test</Text>
+    <Text>Home Screen</Text>
     <Button
       title="Go to Details"
       onPress={() => navigation.navigate('Details')}
