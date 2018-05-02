@@ -13,11 +13,13 @@ const styles = StyleSheet.create({
     flex: 1, // 画面いっぱいに広がる
     backgroundColor: '#FFFFFF',
     paddingTop: 40,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   section: {
     flexDirection: 'row', // 横に並べるようになる
     justifyContent: 'flex-start', // 親コンポーネント内の子コンポーネントの配置(縦軸の)を決める。中央から配置される
-    padding: 10,
+    height: 72,
     alignItems: 'center', // 子コンポーネントの配置(横軸の)を決める。真ん中に配置される
     borderBottomWidth: 1,
     backgroundColor: '#FFFFFF',
@@ -25,10 +27,10 @@ const styles = StyleSheet.create({
   },
   image: {
     padding: 2,
-    height: 24,
-    width: 24,
-    borderRadius: 12,
-    marginRight: 8,
+    height: 32,
+    width: 32,
+    borderRadius: 16,
+    marginRight: 16,
     borderWidth: 1,
     borderColor: '#BDBDBD',
     alignSelf: 'center',
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     color: '#212121',
-    marginBottom: 2,
   },
   url: {
     fontSize: 12,
