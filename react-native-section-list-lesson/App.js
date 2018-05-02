@@ -11,16 +11,17 @@ import imageUrl from './favicons.png';
 const styles = StyleSheet.create({
   container: {
     flex: 1, // 画面いっぱいに広がる
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
     paddingTop: 40,
-    paddingLeft: 20,
   },
   section: {
     flexDirection: 'row', // 横に並べるようになる
     justifyContent: 'flex-start', // 親コンポーネント内の子コンポーネントの配置(縦軸の)を決める。中央から配置される
-    padding: 5,
+    padding: 10,
     alignItems: 'center', // 子コンポーネントの配置(横軸の)を決める。真ん中に配置される
-    backgroundColor: 'white',
+    borderBottomWidth: 1,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#DDDDDD',
   },
   image: {
     padding: 2,
@@ -37,12 +38,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   title: {
-    fontSize: 28,
+    fontSize: 16,
     color: '#212121',
     marginBottom: 2,
   },
   url: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#757575',
   },
 
