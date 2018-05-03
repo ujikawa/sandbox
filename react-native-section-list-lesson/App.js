@@ -6,20 +6,20 @@ import {
   View,
 } from 'react-native';
 
-import imageUrl from './favicons.png';
+import imageUrl from './screen.png';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1, // 画面いっぱいに広がる
     backgroundColor: '#FFFFFF',
     paddingTop: 40,
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingLeft: 12,
+    paddingRight: 12,
   },
   section: {
     flexDirection: 'row', // 横に並べるようになる
     justifyContent: 'flex-start', // 親コンポーネント内の子コンポーネントの配置(縦軸の)を決める。中央から配置される
-    height: 72,
+    height: 56,
     alignItems: 'center', // 子コンポーネントの配置(横軸の)を決める。真ん中に配置される
     borderBottomWidth: 1,
     backgroundColor: '#FFFFFF',
@@ -27,20 +27,17 @@ const styles = StyleSheet.create({
   },
   image: {
     padding: 2,
-    height: 32,
-    width: 32,
-    borderRadius: 16,
-    marginRight: 16,
-    borderWidth: 1,
-    borderColor: '#BDBDBD',
-    alignSelf: 'center',
-    resizeMode: 'contain',
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    marginRight: 12,
   },
   text: {
     justifyContent: 'flex-start',
   },
   title: {
-    fontSize: 16,
+    fontSize: 20,
+    fontWeight: 'bold',
     color: '#212121',
   },
   url: {
