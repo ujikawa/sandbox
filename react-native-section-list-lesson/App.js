@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import imageUrl from './screen.png';
+import imageUrl2 from './mark.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +33,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginRight: 12,
   },
+  image2: {
+    height: 16,
+    width: 16,
+  },
   text: {
     justifyContent: 'flex-start',
   },
@@ -44,16 +49,26 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#757575',
   },
-
+  mark: {
+  },
+  section2: {
+    flex: 1,
+    flexDirection: 'row', // 横に並べるようになる
+    justifyContent: 'space-between',
+    alignItems: 'center', // 子コンポーネントの配置(横軸の)を決める。真ん中に配置される
+  },
 });
 
 const App = () => (
   <View style={styles.container}>
     <View style={styles.section}>
       <Image style={styles.image} source={imageUrl} />
-      <View style={styles.text}>
-        <Text style={styles.title}>Poney</Text>
-        <Text style={styles.url}>https://www.poney.jp/</Text>
+      <View style={styles.section2}>
+        <View style={styles.text}>
+          <Text style={styles.title}>Poney</Text>
+          <Text style={styles.url}>https://www.poney.jp/</Text>
+        </View>
+        <Image style={styles.image2} source={imageUrl2} />
       </View>
     </View>
   </View>
