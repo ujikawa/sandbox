@@ -71,6 +71,25 @@ const App = () => (
         <Image style={styles.image2} source={imageUrl2} />
       </View>
     </View>
+    <View style={styles.section}>
+      <Image style={styles.image} source={imageUrl} />
+      <View style={styles.section2}>
+        <View style={styles.text}>
+          <Text style={styles.title}>Poney</Text>
+          <Text style={styles.url}>https://www.poney.jp/</Text>
+        </View>
+        <Image style={styles.image2} source={imageUrl2} />
+      </View>
+    </View>
+    <View style={styles.section}>
+      <Image style={styles.image} source={imageUrl} />
+      <View style={styles.section2}>
+        <View style={styles.text}>
+          <Text style={styles.title}>Poney</Text>
+          <Text style={styles.url}>https://www.poney.jp/</Text>
+        </View>
+      </View>
+    </View>
   </View>
 );
 
