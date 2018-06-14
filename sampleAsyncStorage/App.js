@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
 
-//ダメぽい
+
 export default class App extends React.Component {
   render() {
     let UID123_object = {
@@ -19,6 +19,7 @@ export default class App extends React.Component {
        AsyncStorage.mergeItem('UID123', JSON.stringify(UID123_delta), () => {
          AsyncStorage.getItem('UID123', (err, result) => {
            console.log(result);
+           //I/ReactNativeJS( 1826): {"name":"Chris","age":31,"traits":{"hair":"brown","eyes":"blue","shoe_size":10}}
          });
        });
      });
