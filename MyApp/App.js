@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   TextInput,
   View,
   Button,
-  Alert,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -15,13 +13,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
   input: {
-    fontSize: 20,
+    width: 350,
+    fontSize: 16,
     textAlign: 'center',
     margin: 10,
   },
@@ -37,7 +31,7 @@ export default class App extends Component {
         />
         <Button
           onPress={() => {
-            Alert.alert('You tapped the button!');
+            // URLを追加する処理
           }}
           title="登録"
         />
