@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   View,
+  FlatList,
   Button,
 } from 'react-native';
 import {PagerTabIndicator, IndicatorViewPager} from 'rn-viewpager';
@@ -12,13 +13,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  listpage:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
   editpage:{
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-
   input: {
     width: 350,
     fontSize: 16,
@@ -28,6 +34,17 @@ const styles = StyleSheet.create({
 });
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [
+        { key: 'a' },
+        { key: 'b' },
+        { key: 'c' },
+      ],
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -35,8 +52,8 @@ export default class App extends Component {
           style={{flex:1, paddingTop:20, backgroundColor:'white'}}
           indicator={this._renderTabIndicator()}
         >
-          <View style={{backgroundColor:'cadetblue'}}>
-            <Text>page one</Text>
+          <View style={styles.listpage}>
+            <FlatList data={this.state.data} renderItem={this._renderItem} />
           </View>
           <View style={styles.editpage}>
             <TextInput
@@ -55,15 +72,17 @@ export default class App extends Component {
     );
   }
 
+  _renderItem = data => <Text style={styles.row}>{data.item.key}</Text>;
+
   _renderTabIndicator() {
     let tabs = [{
             text: 'ブックマークリスト',
-            iconSource: require('./imgs/ic_tab.png'),
-            selectedIconSource: require('./imgs/ic_tab.png')
+            iconSource: require('./imgs/bookmark.png'),
+            selectedIconSource: require('./imgs/bookmark.png')
         },{
             text: '新規登録',
-            iconSource: require('./imgs/ic_tab.png'),
-            selectedIconSource: require('./imgs/ic_tab.png')
+            iconSource: require('./imgs/register.png'),
+            selectedIconSource: require('./imgs/register.png')
         }];
     return <PagerTabIndicator tabs={tabs} />;
   }
