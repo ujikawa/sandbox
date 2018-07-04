@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   StyleSheet,
   Text,
   TextInput,
@@ -34,17 +35,46 @@ const styles = StyleSheet.create({
 });
 
 export default class App extends Component {
+  static STORAGE_KEY = '@BookmarkApp:urls'
+  
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        { key: 'a' },
-        { key: 'b' },
-        { key: 'c' },
-      ],
+      text: '',
+      urls: [],
     };
   }
 
+  async componentDidMount() {
+    let json = await AsyncStorage.getItem(App.STORAGE_KEY)
+
+    if(json != null) {
+      let urls = JSON.parse(json);
+      this.setState({
+        urls: urls,
+      })
+    }
+  }
+
+  _addItem() {
+    let urls = this.state.urls;
+    let text = this.state.text;
+
+    urls.push({key: Date.now(), value: text});
+    this.setState({
+      text: '',
+      urls: urls,
+    });
+    AsyncStorage.setItem(App.STORAGE_KEY, JSON.stringify(urls));
+  }
+
+  _onChange(text) {
+    this.setState({text: text});
+  }
+
+  _clear() {
+    AsyncStorage.setItem(App.STORAGE_KEY, JSON.stringify([]));
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -53,16 +83,24 @@ export default class App extends Component {
           indicator={this._renderTabIndicator()}
         >
           <View style={styles.listpage}>
-            <FlatList data={this.state.data} renderItem={this._renderItem} />
+            <FlatList data={this.state.urls} renderItem={this._renderItem} />
+            <Button
+              onPress={() => {
+                this._clear();
+              }}
+              title="クリア"
+            />
+
           </View>
           <View style={styles.editpage}>
             <TextInput
-            style={styles.input}
-            placeholder="ブックマークしたいURLを入力"
+              style={styles.input}
+              onChangeText={this._onChange.bind(this)}
+              placeholder="ブックマークしたいURLを入力"
             />
             <Button
               onPress={() => {
-                // URLを追加する処理
+                this._addItem();
               }}
               title="登録"
             />
@@ -72,7 +110,7 @@ export default class App extends Component {
     );
   }
 
-  _renderItem = data => <Text style={styles.row}>{data.item.key}</Text>;
+  _renderItem = data => <Text style={styles.row}>{data.item.value}</Text>;
 
   _renderTabIndicator() {
     let tabs = [{
