@@ -75,6 +75,7 @@ export default class App extends Component {
   _clear() {
     AsyncStorage.setItem(App.STORAGE_KEY, JSON.stringify([]));
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -83,7 +84,7 @@ export default class App extends Component {
           indicator={this._renderTabIndicator()}
         >
           <View style={styles.listpage}>
-            <FlatList data={this.state.urls} renderItem={this._renderItem} />
+            <FlatList data={this.state.urls} extraData={this.state.text.length} renderItem={this._renderItem} />
             <Button
               onPress={() => {
                 this._clear();
