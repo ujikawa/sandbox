@@ -8,19 +8,19 @@ import {
   FlatList,
   Button,
 } from 'react-native';
-import {PagerTabIndicator, IndicatorViewPager} from 'rn-viewpager';
+import { PagerTabIndicator, IndicatorViewPager } from 'rn-viewpager';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
-  listpage:{
+  listpage: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  editpage:{
+  editpage: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -32,11 +32,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  row: {
+    margin: 2,
+  },
 });
 
 export default class App extends Component {
   static STORAGE_KEY = '@BookmarkApp:urls'
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,21 +49,21 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    let json = await AsyncStorage.getItem(App.STORAGE_KEY)
+    const json = await AsyncStorage.getItem(App.STORAGE_KEY);
 
-    if(json != null) {
-      let urls = JSON.parse(json);
-      this.setState({
+    if (json != null) {
+      const urls = JSON.parse(json);
+      this.setState( {
         urls: urls,
-      })
+      });
     }
   }
 
   _addItem() {
-    let urls = this.state.urls;
-    let text = this.state.text;
+    const urls = this.state.urls;
+    const text = this.state.text;
 
-    urls.push({key: Date.now(), value: text});
+    urls.push({ key: Date.now(), value: text });
     this.setState({
       text: '',
       urls: urls,
@@ -69,18 +72,33 @@ export default class App extends Component {
   }
 
   _onChange(text) {
-    this.setState({text: text});
+    this.setState({ text: text });
   }
 
   _clear() {
     AsyncStorage.setItem(App.STORAGE_KEY, JSON.stringify([]));
   }
 
+  _renderItem = data => <Text style={styles.row}>{data.item.value}</Text>;
+
+  _renderTabIndicator() {
+    let tabs = [{
+            text: 'ブックマークリスト',
+            iconSource: require('./imgs/bookmark.png'),
+            selectedIconSource: require('./imgs/bookmark.png')
+        },{
+            text: '新規登録',
+            iconSource: require('./imgs/register.png'),
+            selectedIconSource: require('./imgs/register.png')
+        }];
+    return <PagerTabIndicator tabs={tabs} />;
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <IndicatorViewPager
-          style={{flex:1, paddingTop:20, backgroundColor:'white'}}
+          style={{ flex: 1, paddingTop: 20, backgroundColor: 'white' }}
           indicator={this._renderTabIndicator()}
         >
           <View style={styles.listpage}>
@@ -109,21 +127,6 @@ export default class App extends Component {
         </IndicatorViewPager>
       </View>
     );
-  }
-
-  _renderItem = data => <Text style={styles.row}>{data.item.value}</Text>;
-
-  _renderTabIndicator() {
-    let tabs = [{
-            text: 'ブックマークリスト',
-            iconSource: require('./imgs/bookmark.png'),
-            selectedIconSource: require('./imgs/bookmark.png')
-        },{
-            text: '新規登録',
-            iconSource: require('./imgs/register.png'),
-            selectedIconSource: require('./imgs/register.png')
-        }];
-    return <PagerTabIndicator tabs={tabs} />;
   }
 
 }
