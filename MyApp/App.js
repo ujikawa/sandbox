@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   View,
+  TouchableHighlight,
   FlatList,
   Button,
 } from 'react-native';
@@ -79,7 +80,7 @@ export default class App extends Component {
     AsyncStorage.setItem(App.STORAGE_KEY, JSON.stringify([]));
   }
 
-  _renderItem = data => <Text style={styles.row}>{data.item.value}</Text>;
+  _renderItem = data => <TouchableHighlight> <Text style={styles.row}>{data.item.value}</Text> </TouchableHighlight>
 
   _renderTabIndicator() {
     let tabs = [{
