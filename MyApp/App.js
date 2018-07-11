@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import {
   AsyncStorage,
   StyleSheet,
-  Text,
+  Linking,
   TextInput,
   View,
-  TouchableHighlight,
   FlatList,
   Button,
 } from 'react-native';
 import { PagerTabIndicator, IndicatorViewPager } from 'rn-viewpager';
+import Row from './Row';
 
 const styles = StyleSheet.create({
   container: {
@@ -80,7 +80,7 @@ export default class App extends Component {
     AsyncStorage.setItem(App.STORAGE_KEY, JSON.stringify([]));
   }
 
-  _renderItem = data => <TouchableHighlight> <Text style={styles.row}>{data.item.value}</Text> </TouchableHighlight>
+  _renderItem = data => <Row text={data.item.value} />
 
   _renderTabIndicator() {
     let tabs = [{
@@ -110,7 +110,6 @@ export default class App extends Component {
               }}
               title="クリア"
             />
-
           </View>
           <View style={styles.editpage}>
             <TextInput
