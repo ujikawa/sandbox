@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   AsyncStorage,
   StyleSheet,
-  Linking,
   TextInput,
   View,
   FlatList,
@@ -84,11 +83,11 @@ export default class App extends Component {
 
   _renderTabIndicator() {
     let tabs = [{
-            text: 'ブックマークリスト',
+            text: 'Bookmark',
             iconSource: require('./imgs/bookmark.png'),
             selectedIconSource: require('./imgs/bookmark.png')
         },{
-            text: '新規登録',
+            text: 'Add',
             iconSource: require('./imgs/register.png'),
             selectedIconSource: require('./imgs/register.png')
         }];
